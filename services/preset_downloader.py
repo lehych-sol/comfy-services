@@ -142,7 +142,7 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/bbox/pussyV2.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/bbox/face_yolov8m.pt", "ultralytics/bbox", None),
     ],
-    "FLUX_SWAP_I2I": [
+    "BODY_SWAP_I2I": [
         ("https://huggingface.co/lehychh/Flux-swap-i2i/resolve/main/diffusion_models/flux4b.safetensors", "diffusion_models", None),
         ("https://huggingface.co/lehychh/Flux-swap-i2i/resolve/main/text_encoders/qwen.safetensors", "text_encoders", None),
         ("https://huggingface.co/lehychh/Flux-swap-i2i/resolve/main/vae/flux2-vae.safetensors", "vae", None),
