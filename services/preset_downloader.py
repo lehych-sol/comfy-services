@@ -63,7 +63,7 @@ PRESETS = {
         "video_guide": "",
     },
     "FLUX_SWAP_I2I": {
-        "name": "Flux Swap I2I",
+        "name": "Body Swap I2I",
         "description": "Swap изображений через Z-image",
         "size": "~3 файла",
         "time": "5-10 мин",
