@@ -73,7 +73,6 @@ NODES=(
     "https://github.com/numz/ComfyUI-SeedVR2_VideoUpscaler"
     "https://github.com/cubiq/ComfyUI_essentials"
     "https://github.com/ClownsharkBatwing/RES4LYF"
-    "https://github.com/jnxmx/ComfyUI_HuggingFace_Downloader"
     "https://github.com/chrisgoringe/cg-use-everywhere"
     "https://github.com/ltdrdata/ComfyUI-Impact-Subpack"
     "https://github.com/Smirnov75/ComfyUI-mxToolkit"
