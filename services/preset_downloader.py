@@ -17,7 +17,6 @@ app.mount("/static", StaticFiles(directory=static_dir), name="static")
 PRESET_CATEGORIES = {
     "Wan": {"name": "Wan", "icon": "🎬"},
     "ZImage": {"name": "Z-Image", "icon": "🖼️"},
-    "Flux": {"name": "Flux", "icon": "⚡"},
 }
 
 # ─────────────── ПРЕСЕТЫ (описания) ───────────────
@@ -62,12 +61,12 @@ PRESETS = {
         "category": "ZImage",
         "video_guide": "",
     },
-    "FLUX_SWAP_I2I": {
+    "BODY_SWAP_I2I": {
         "name": "Body Swap I2I",
         "description": "Swap изображений через Z-image",
         "size": "~3 файла",
         "time": "5-10 мин",
-        "category": "Flux",
+        "category": "ZImage",
         "video_guide": "",
     },
 }
