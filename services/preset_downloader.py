@@ -5,20 +5,20 @@ import os
 import threading
 import uuid
 import requests
-
+ 
 app = FastAPI(title="Preset & Model Downloader")
-
+ 
 download_status = {}
-
+ 
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
-
+ 
 # ─────────────── КАТЕГОРИИ ───────────────
 PRESET_CATEGORIES = {
     "Wan": {"name": "Wan", "icon": "🎬"},
     "ZImage": {"name": "Z-Image", "icon": "🖼️"},
 }
-
+ 
 # ─────────────── ПРЕСЕТЫ (описания) ───────────────
 PRESETS = {
     "WAN_ANIMATE_I2V": {
@@ -61,16 +61,16 @@ PRESETS = {
         "category": "ZImage",
         "video_guide": "",
     },
-    "BODY_SWAP_I2I": {
-        "name": "Body Swap I2I",
-        "description": "Swap изображений через Z-image",
+    "ZIMAGE_BODY_SWAP_I2I": {
+        "name": "Flux Swap I2I",
+        "description": "Swap изображений через Flux",
         "size": "~3 файла",
         "time": "5-10 мин",
-        "category": "ZImage",
+        "category": "Z-Image",
         "video_guide": "",
     },
 }
-
+ 
 # ─────────────── ФАЙЛЫ ПРЕСЕТОВ (заполни сам) ───────────────
 PRESET_FILES = {
     "WAN_ANIMATE_I2V": [
@@ -80,9 +80,9 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/Wan-animate-i2v/resolve/main/vae/variational_encoder_primary.safetensors", "vae", None),
     ],
     "WAN_ANIMATE_V2V": [
-        ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/diffusion_models/Wan2_2-Animate-14B_fp8_scaled_e4m3fn_KJ_v2.safetensors", "diffusion_models", None),
+        ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/diffusion_models/BounceHighWan2_2.safetensors", "diffusion_models", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/vae/wan_2.1_vae.safetensors", "vae", None),
-        ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/clip/umt5_xxl_fp16.safetensors", "text_encoders", None),
+        ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/text_encoders/umt5_xxl_fp16.safetensors", "text_encoders", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors", "loras", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/loras/lightx2v_I2V_14B_480p_cfg_step_distill_rank256_bf16.safetensors", "loras", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/loras/Wan21_PusaV1_LoRA_14B_rank512_bf16.safetensors", "loras", None),
@@ -118,36 +118,37 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/Wan-animate-I2V-18/resolve/main/loras/wan_fingering_pussy_i2v2.2lo_v10.safetensors", "loras", None),
     ],
     "ZIMAGE_TURBO_T2I_I2I": [
-        ("https://huggingface.co/lehychh/Z-ImageTurbo/resolve/main/diffusion_models/zimage.safetensors", "diffusion_models", None),
-        ("https://huggingface.co/lehychh/Z-ImageTurbo/resolve/main/loras/x_gen_weights.safetensors", "loras", None),
-        ("https://huggingface.co/lehychh/Z-ImageTurbo/resolve/main/loras/primary_net_v2.safetensors", "loras", None),
-        ("https://huggingface.co/lehychh/Z-ImageTurbo/resolve/main/loras/RealisticSnapshot-Zimage-Turbov5.safetensors", "loras", None),
-        ("https://huggingface.co/lehychh/Z-ImageTurbo/resolve/main/text_encoders/qwen.safetensors", "text_encoders", None),
-        ("https://huggingface.co/lehychh/Z-ImageTurbo/resolve/main/upscale_models/upscale1.pth", "upscale_models", None),
-        ("https://huggingface.co/lehychh/Z-ImageTurbo/resolve/main/vae/variational_encoder_primary.safetensors", "vae", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/z-image-turbo.safetensors", "diffusion_models", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/x_gen_weights.safetensors", "loras", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/nice_girls_z-image.safetensors", "loras", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/vae.safetensors", "vae", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/qwen.safetensors", "text_encoders", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/2x_PureVision.pth", "upscale_models", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/face_yolov8m.pt", "ultralytics/bbox", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/person_yolov8m-seg.pt", "ultralytics/segm", None),
     ],
     "ZIMAGE_SDXL_T2I_NSFW": [
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/diffusion_models/zimage.safetensors", "diffusion_models", None),
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/checkpoints/SDXLNSFW.safetensors", "checkpoints", None),
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/vae/ae.safetensors", "vae", None),
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/clip/qwen.safetensors", "text_encoders", None),
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/loras/DetailedNipples.safetensors", "loras", None),
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/loras/dmd2_sdxl_4step_lora_fp16.safetensors", "loras", None),
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/upscale_models/4x-UltraSharpV2.pth", "upscale_models", None),
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/upscale_models/4x_NMKD-Superscale-SP_178000_G.pth", "upscale_models", None),
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/upscale_models/x1_ITF_SkinDiffDetail_Lite_v1.pth", "upscale_models", None),
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/bbox/lips_v1.pt", "ultralytics/bbox", None),
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/bbox/nipple.pt", "ultralytics/bbox", None),
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/bbox/pussyV2.pt", "ultralytics/bbox", None),
-        ("https://huggingface.co/lehychh/Z-image-SDXL-t2i/resolve/main/bbox/face_yolov8m.pt", "ultralytics/bbox", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/z-image-turbo.safetensors", "diffusion_models", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/SDXLNSFW.safetensors", "checkpoints", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/lustifySDXLNSFW_V7.safetensors", "checkpoints", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/vae.safetensors", "vae", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/qwen.safetensors", "text_encoders", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/pussy_lily_v5_XL.safetensors", "loras", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/2x_PureVision.pth", "upscale_models", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/face_yolov8m.pt", "ultralytics/bbox", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/female_breast-v4.2.pt", "ultralytics/bbox", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/nipples_yolov8s.pt", "ultralytics/bbox", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/vagina-v4.2.pt", "ultralytics/bbox", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/assdetailer.pt", "ultralytics/bbox", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/person_yolov8m-seg.pt", "ultralytics/segm", None),
     ],
-    "BODY_SWAP_I2I": [
+    "ZIMAGE_BODY_SWAP_I2I": [
         ("https://huggingface.co/lehychh/Flux-swap-i2i/resolve/main/diffusion_models/flux4b.safetensors", "diffusion_models", None),
         ("https://huggingface.co/lehychh/Flux-swap-i2i/resolve/main/text_encoders/qwen.safetensors", "text_encoders", None),
         ("https://huggingface.co/lehychh/Flux-swap-i2i/resolve/main/vae/flux2-vae.safetensors", "vae", None),
     ],
 }
-
+ 
 # ─────────────── HTML ───────────────
 INDEX_HTML = """<!DOCTYPE html>
 <html lang="ru">
@@ -201,12 +202,12 @@ INDEX_HTML = """<!DOCTYPE html>
   <div class="wrap">
     <h1 class="title">Загрузчик пресетов и моделей</h1>
     <p class="subtitle">Скачивание пресетов и моделей с HuggingFace</p>
-
+ 
     <div class="tabs">
       <div class="tab active" onclick="switchTab('presets')">🎯 Пресеты</div>
       <div class="tab" onclick="switchTab('huggingface')">🤗 HuggingFace</div>
     </div>
-
+ 
     <!-- Пресеты -->
     <div class="card tab-content active" id="presets-tab">
       <h3 style="margin-bottom:16px;">Выберите пресеты для скачивания</h3>
@@ -222,7 +223,7 @@ INDEX_HTML = """<!DOCTYPE html>
         <div class="progress-text" id="preset-progress-text">Загрузка...</div>
       </div>
     </div>
-
+ 
     <!-- HuggingFace -->
     <div class="card tab-content" id="huggingface-tab">
       <div class="tabs" style="margin-bottom:20px;">
@@ -287,15 +288,15 @@ INDEX_HTML = """<!DOCTYPE html>
   <script src="/static/script.js"></script>
 </body>
 </html>"""
-
-
+ 
+ 
 def generate_category_filters_html():
     html = '<div class="category-filter all active" onclick="filterByCategory(\'all\', event)">Все</div>'
     for cat_id, cat_info in PRESET_CATEGORIES.items():
         html += f'<div class="category-filter" onclick="filterByCategory(\'{cat_id}\', event)" data-category="{cat_id}"><span>{cat_info["icon"]}</span><span>{cat_info["name"]}</span></div>'
     return html
-
-
+ 
+ 
 def generate_presets_html():
     html = ""
     for preset_id, preset_info in PRESETS.items():
@@ -307,8 +308,8 @@ def generate_presets_html():
           <div class="preset-info">Размер: {preset_info["size"]} • Время: {preset_info["time"]}</div>
         </div>'''
     return html
-
-
+ 
+ 
 @app.get("/", response_class=HTMLResponse)
 def index():
     return HTMLResponse(
@@ -316,53 +317,53 @@ def index():
         .replace("{{ presets_html }}", generate_presets_html())
         .replace("{{ category_filters_html }}", generate_category_filters_html())
     )
-
-
+ 
+ 
 @app.get("/health")
 def health():
     return {"status": "ok"}
-
-
+ 
+ 
 @app.get("/status/{task_id}")
 def get_status(task_id: str):
     if task_id not in download_status:
         return {"status": "not_found", "message": "Задача не найдена"}
     return download_status[task_id]
-
-
+ 
+ 
 @app.post("/download_presets")
 def download_presets(presets: str = Form(...)):
     presets_list = [p.strip() for p in presets.split(",") if p.strip()]
     if not presets_list:
         return {"message": "❌ Не выбрано ни одного пресета"}
-
+ 
     task_id = str(uuid.uuid4())
-
+ 
     def run():
         try:
             all_files = []
             for pid in presets_list:
                 if pid in PRESET_FILES:
                     all_files.extend(PRESET_FILES[pid])
-
+ 
             total = len(all_files)
             download_status[task_id] = {"status": "running", "message": f"🚀 Начато: {', '.join(presets_list)}\nФайлов: {total}", "progress": 0, "total_files": total, "current_file": 0}
-
+ 
             downloaded, skipped, failed = [], [], []
-
+ 
             for idx, (url, folder, custom_name) in enumerate(all_files, 1):
                 dest = f"/workspace/ComfyUI/models/{folder}"
                 os.makedirs(dest, exist_ok=True)
                 filename = custom_name or url.split("/")[-1].split("?")[0]
                 filepath = os.path.join(dest, filename)
-
+ 
                 if os.path.isfile(filepath) and os.path.getsize(filepath) > 0:
                     skipped.append(filename)
                     download_status[task_id]["current_file"] = idx
                     download_status[task_id]["progress"] = idx / total * 100
                     download_status[task_id]["message"] = f"⏭️ Пропущено: {filename} ({idx}/{total})"
                     continue
-
+ 
                 download_status[task_id]["message"] = f"📥 Скачивание {idx}/{total}: {filename}"
                 try:
                     r = requests.get(url, stream=True, headers={"User-Agent": "Mozilla/5.0"}, timeout=600)
@@ -384,7 +385,7 @@ def download_presets(presets: str = Form(...)):
                     if os.path.exists(filepath):
                         os.remove(filepath)
                     failed.append(filename)
-
+ 
             lines = [f"✅ Завершено: {', '.join(presets_list)}", ""]
             if downloaded:
                 lines.append(f"📥 Скачано: {len(downloaded)}")
@@ -395,7 +396,7 @@ def download_presets(presets: str = Form(...)):
             if failed:
                 lines.append(f"❌ Ошибки: {len(failed)}")
                 lines += [f"  ❌ {f}" for f in failed]
-
+ 
             download_status[task_id] = {
                 "status": "error" if failed else "completed",
                 "message": "\n".join(lines),
@@ -405,16 +406,16 @@ def download_presets(presets: str = Form(...)):
             }
         except Exception as e:
             download_status[task_id] = {"status": "error", "message": f"❌ Ошибка: {e}", "progress": 0}
-
+ 
     download_status[task_id] = {"status": "running", "message": "🚀 Запускаем...", "progress": 0}
     threading.Thread(target=run, daemon=True).start()
     return {"message": f"🚀 Начато! ID: {task_id}", "task_id": task_id}
-
-
+ 
+ 
 @app.post("/download_url")
 def download_url_endpoint(url: str = Form(...), folder: str = Form("diffusion_models")):
     task_id = str(uuid.uuid4())
-
+ 
     def run():
         try:
             dest = f"/workspace/ComfyUI/models/{folder}"
@@ -443,16 +444,16 @@ def download_url_endpoint(url: str = Form(...), folder: str = Form("diffusion_mo
             download_status[task_id] = {"status": "completed", "message": f"✅ Скачано!\n📄 {filename}\n💾 {size_mb:.1f} MB\n📂 {dest}", "progress": 100}
         except Exception as e:
             download_status[task_id] = {"status": "error", "message": f"❌ Ошибка: {e}", "progress": 0}
-
+ 
     download_status[task_id] = {"status": "running", "message": "🚀 Запускаем...", "progress": 0}
     threading.Thread(target=run, daemon=True).start()
     return {"message": f"🚀 Начато! ID: {task_id}", "task_id": task_id}
-
-
+ 
+ 
 @app.post("/download_hf")
 def download_hf_endpoint(repo: str = Form(...), filename: str = Form(""), token: str = Form(""), folder: str = Form("diffusion_models")):
     task_id = str(uuid.uuid4())
-
+ 
     def run():
         try:
             dest = f"/workspace/ComfyUI/models/{folder}"
@@ -460,7 +461,7 @@ def download_hf_endpoint(repo: str = Form(...), filename: str = Form(""), token:
             headers = {"User-Agent": "Mozilla/5.0"}
             if token:
                 headers["Authorization"] = f"Bearer {token}"
-
+ 
             if filename:
                 url = f"https://huggingface.co/{repo}/resolve/main/{filename}"
                 download_status[task_id] = {"status": "running", "message": "📥 Подключение к HuggingFace...", "progress": 0}
@@ -488,7 +489,7 @@ def download_hf_endpoint(repo: str = Form(...), filename: str = Form(""), token:
                 download_status[task_id] = {"status": "completed", "message": f"✅ Репозиторий {repo} скачан!\n📂 {dest}", "progress": 100}
         except Exception as e:
             download_status[task_id] = {"status": "error", "message": f"❌ Ошибка: {e}", "progress": 0}
-
+ 
     download_status[task_id] = {"status": "running", "message": "🚀 Запускаем...", "progress": 0}
     threading.Thread(target=run, daemon=True).start()
     return {"message": f"🚀 Начато! ID: {task_id}", "task_id": task_id}
