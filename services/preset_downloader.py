@@ -62,11 +62,11 @@ PRESETS = {
         "video_guide": "",
     },
     "ZIMAGE_BODY_SWAP_I2I": {
-        "name": "Flux Swap I2I",
-        "description": "Swap изображений через Flux",
+        "name": "Z-image Swap I2I",
+        "description": "Генерация изображений через SWAP",
         "size": "~3 файла",
         "time": "5-10 мин",
-        "category": "Z-Image",
+        "category": "ZImage",
         "video_guide": "",
     },
 }
