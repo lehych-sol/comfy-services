@@ -137,6 +137,8 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/face_yolov8m.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/nipples_yolov8s.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/vagina-v4.2.pt", "ultralytics/bbox", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/Eyes.pt", "ultralytics/bbox", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/lips_v1.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/assdetailer.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/person_yolov8m-seg.pt", "ultralytics/segm", None),
     ],
