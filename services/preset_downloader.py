@@ -71,7 +71,7 @@ PRESETS = {
 
     },
     "ZIMAGE_MORPH": {
-        "name": "Z-image",
+        "name": "Z-image Morph",
         "description": "Генерация изображений",
         "size": "~14 файлов",
         "time": "5-10 мин",
