@@ -135,6 +135,7 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/2x_PureVision.pth", "upscale_models", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/face_yolov8m.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/person_yolov8m-seg.pt", "ultralytics/segm", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/Z-Image-Turbo-Fun-Controlnet-Union-2.1-2602-8steps.safetensors", "model_patches", None),
     ],
     "ZIMAGE_SDXL_T2I_NSFW": [
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/z-image-turbo.safetensors", "diffusion_models", None),
@@ -150,6 +151,7 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/hand_yolov8s.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/assdetailer-seg.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/person_yolov8m-seg.pt", "ultralytics/segm", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/Z-Image-Turbo-Fun-Controlnet-Union-2.1-2602-8steps.safetensors", "model_patches", None),
     ],
     "ZIMAGE_BODY_SWAP_I2I": [
         ("https://huggingface.co/lehychh/Flux-swap-i2i/resolve/main/diffusion_models/flux4b.safetensors", "diffusion_models", None),
