@@ -15,8 +15,9 @@ app.mount("/static", StaticFiles(directory=static_dir), name="static")
  
 # ─────────────── КАТЕГОРИИ ───────────────
 PRESET_CATEGORIES = {
-    "Wan": {"name": "Wan", "icon": "🎬"},
-    "ZImage": {"name": "Z-Image", "icon": "🖼️"},
+    "Wan": {"name": "Wan", "icon": "🌿"},
+    "Seedream": {"name": "Seedream", "icon": "🌸"},
+    "ZImage": {"name": "Z-Image", "icon": "☘️"},
 }
  
 # ─────────────── ПРЕСЕТЫ (описания) ───────────────
@@ -48,7 +49,7 @@ PRESETS = {
     "ZIMAGE_TURBO_T2I_I2I": {
         "name": "Z-Image Turbo T2I/I2I",
         "description": "Генерация и улучшение изображений",
-        "size": "~7 файлов",
+        "size": "~10 файлов",
         "time": "10-15 мин",
         "category": "ZImage",
         "video_guide": "",
@@ -56,8 +57,8 @@ PRESETS = {
     "ZIMAGE_SDXL_T2I_NSFW": {
         "name": "Z-Image SDXL T2I NSFW",
         "description": "Генерация изображений SDXL (NSFW)",
-        "size": "~14 файлов",
-        "time": "15-25 мин",
+        "size": "~19 файлов",
+        "time": "15-20 мин",
         "category": "ZImage",
         "video_guide": "",
     },
@@ -65,7 +66,7 @@ PRESETS = {
         "name": "Z-image Swap I2I",
         "description": "Генерация изображений через SWAP",
         "size": "~3 файла",
-        "time": "5-10 мин",
+        "time": "5 мин",
         "category": "ZImage",
         "video_guide": "",
 
@@ -73,9 +74,17 @@ PRESETS = {
     "ZIMAGE_MORPH": {
         "name": "Z-image Morph",
         "description": "Генерация изображений",
-        "size": "~14 файлов",
+        "size": "~15 файлов",
         "time": "15-20 мин",
         "category": "ZImage",
+        "video_guide": "",
+    },
+    "SEEDREAM_EDIT": {
+        "name": "Seedream edit I2I",
+        "description": "Генерация изображений через Seedream",
+        "size": "~5 файлов",
+        "time": "5-10 мин",
+        "category": "Seedream",
         "video_guide": "",
     },
 }
@@ -131,9 +140,10 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/x_gen_weights.safetensors", "loras", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/nice_girls_z-image.safetensors", "loras", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/vae.safetensors", "vae", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/sam_vit_b_01ec64.pth", "sams", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/qwen.safetensors", "text_encoders", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/2x_PureVision.pth", "upscale_models", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/face_yolov8m.pt", "ultralytics/bbox", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/face_yolov9c.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/person_yolov8m-seg.pt", "ultralytics/segm", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/Z-Image-Turbo-Fun-Controlnet-Union-2.1-2602-8steps.safetensors", "model_patches", None),
     ],
@@ -143,8 +153,9 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/vae.safetensors", "vae", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/qwen.safetensors", "text_encoders", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/pussy_lily_v5_XL.safetensors", "loras", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/sam_vit_b_01ec64.pth", "sams", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/2x_PureVision.pth", "upscale_models", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/face_yolov8m.pt", "ultralytics/bbox", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/face_yolov9c.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/nipple.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/vagina-v4.2.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/Eyes.pt", "ultralytics/bbox", None),
@@ -168,13 +179,20 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/gta6_amateur_photography_zimagebase_v2.safetensors", "loras", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/sam_vit_b_01ec64.pth", "sams", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/RealisticSnapshot-Zimage-Turbov5.safetensors", "loras", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/face_yolov8m.pt", "ultralytics/bbox", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/face_yolov9c.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/nipple.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/vagina-v4.2.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/Eyes.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/hand_yolov8s.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/assdetailer-seg.pt", "ultralytics/bbox", None),
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/person_yolov8m-seg.pt", "ultralytics/segm", None),
+    ],
+  "SEEDREAM_EDIT": [
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/z-image-turbo.safetensors", "diffusion_models", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/vae.safetensors", "vae", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/qwen.safetensors", "text_encoders", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/sam_vit_b_01ec64.pth", "sams", None),
+        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/face_yolov9c.pt", "ultralytics/bbox", None),
     ],
 }
  
