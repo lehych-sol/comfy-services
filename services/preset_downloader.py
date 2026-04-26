@@ -106,6 +106,7 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/loras/Wan21_PusaV1_LoRA_14B_rank512_bf16.safetensors", "loras", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/loras/Wan2.2-Fun-A14B-InP-low-noise-HPS2.1.safetensors", "loras", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/loras/Wan2.2%20SolarFlint_L2.safetensors", "loras", None),
+        ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/wan2.2_animate_14B_relight_lora_bf16.safetensors", "loras", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/loras/BounceHighWan2_2.safetensors", "loras", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/upscale_models/005_colorDN_DFWB_s128w8_SwinIR-M_noise15.pth", "upscale_models", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/upscale_models/low.pt", "upscale_models", None),
