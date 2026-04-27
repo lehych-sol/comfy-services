@@ -23,14 +23,6 @@ PRESET_CATEGORIES = {
  
 # ─────────────── ПРЕСЕТЫ (описания) ───────────────
 PRESETS = {
-    "WAN_ANIMATE_I2V": {
-        "name": "Wan Animate I2V",
-        "description": "Анимация из изображения",
-        "size": "~4 файла",
-        "time": "10-20 мин",
-        "category": "Wan",
-        "video_guide": "",
-    },
     "WAN_ANIMATE_V2V": {
         "name": "Wan Animate V2V",
         "description": "Анимация видео из видео",
@@ -91,12 +83,6 @@ PRESETS = {
  
 # ─────────────── ФАЙЛЫ ПРЕСЕТОВ (заполни сам) ───────────────
 PRESET_FILES = {
-    "WAN_ANIMATE_I2V": [
-        ("https://huggingface.co/lehychh/Wan-animate-i2v/resolve/main/diffusion_models/High.safetensors", "diffusion_models", None),
-        ("https://huggingface.co/lehychh/Wan-animate-i2v/resolve/main/diffusion_models/Low.safetensors", "diffusion_models", None),
-        ("https://huggingface.co/lehychh/Wan-animate-i2v/resolve/main/text_encoders/umt5.safetensors", "text_encoders", None),
-        ("https://huggingface.co/lehychh/Wan-animate-i2v/resolve/main/vae/variational_encoder_primary.safetensors", "vae", None),
-    ],
     "WAN_ANIMATE_V2V": [
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/diffusion_models/Wan2_2-Animate-14B_fp8_scaled_e4m3fn_KJ_v2.safetensors", "diffusion_models", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/vae/wan_2.1_vae.safetensors", "vae", None),
