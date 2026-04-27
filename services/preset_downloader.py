@@ -233,8 +233,8 @@ INDEX_HTML = """<!DOCTYPE html>
     <p class="subtitle">Скачивание пресетов и моделей с HuggingFace</p>
  
     <div class="tabs">
-      <div class="tab active" onclick="switchTab('presets')">🎯 Пресеты</div>
-      <div class="tab" onclick="switchTab('huggingface')">🤗 HuggingFace</div>
+      <div class="tab active" onclick="switchTab('presets')">♥️ Пресеты</div>
+      <div class="tab" onclick="switchTab('huggingface')">♠️ HuggingFace</div>
     </div>
  
     <!-- Пресеты -->
@@ -256,8 +256,8 @@ INDEX_HTML = """<!DOCTYPE html>
     <!-- HuggingFace -->
     <div class="card tab-content" id="huggingface-tab">
       <div class="tabs" style="margin-bottom:20px;">
-        <div class="tab active" onclick="switchHFMethod('url')">🔗 Прямая ссылка</div>
-        <div class="tab" onclick="switchHFMethod('repo')">🤗 HuggingFace Repo</div>
+        <div class="tab active" onclick="switchHFMethod('url')">♦️ Прямая ссылка</div>
+        <div class="tab" onclick="switchHFMethod('repo')">♣️ HuggingFace Repo</div>
       </div>
       <form id="hf-url-form">
         <div class="row">
