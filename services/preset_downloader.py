@@ -70,15 +70,6 @@ PRESETS = {
         "time": "5 мин",
         "category": "ZImage",
         "video_guide": "",
-
-    },
-    "ZIMAGE_MORPH": {
-        "name": "Z-image Morph",
-        "description": "Генерация изображений",
-        "size": "~15 файлов",
-        "time": "15-20 мин",
-        "category": "ZImage",
-        "video_guide": "",
     },
     "SEEDREAM_EDIT": {
         "name": "Seedream edit I2I",
@@ -178,24 +169,6 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/Flux-swap-i2i/resolve/main/diffusion_models/flux4b.safetensors", "diffusion_models", None),
         ("https://huggingface.co/lehychh/Flux-swap-i2i/resolve/main/text_encoders/qwen.safetensors", "text_encoders", None),
         ("https://huggingface.co/lehychh/Flux-swap-i2i/resolve/main/vae/flux2-vae.safetensors", "vae", None),
-
-     ],
-    "ZIMAGE_MORPH": [
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/z-image-turbo.safetensors", "diffusion_models", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/lustifySDXLNSFW_V7.safetensors", "checkpoints", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/vae.safetensors", "vae", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/qwen.safetensors", "text_encoders", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/pussy_lily_v5_XL.safetensors", "loras", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/gta6_amateur_photography_zimagebase_v2.safetensors", "loras", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/sam_vit_b_01ec64.pth", "sams", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/RealisticSnapshot-Zimage-Turbov5.safetensors", "loras", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/face_yolov9c.pt", "ultralytics/bbox", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/nipple.pt", "ultralytics/bbox", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/vagina-v4.2.pt", "ultralytics/bbox", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/Eyes.pt", "ultralytics/bbox", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/hand_yolov8s.pt", "ultralytics/bbox", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/assdetailer-seg.pt", "ultralytics/bbox", None),
-        ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/person_yolov8m-seg.pt", "ultralytics/segm", None),
     ],
   "SEEDREAM_EDIT": [
         ("https://huggingface.co/lehychh/Z-image-Turbo/resolve/main/z-image-turbo.safetensors", "diffusion_models", None),
