@@ -84,7 +84,7 @@ PRESETS = {
 # ─────────────── ФАЙЛЫ ПРЕСЕТОВ (заполни сам) ───────────────
 PRESET_FILES = {
     "WAN_ANIMATE_V2V": [
-        ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/diffusion_models/Wan2_2-Animate-14B_fp8_scaled_e4m3fn_KJ_v2.safetensors", "diffusion_models", None),
+        ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/diffusion_models/wan2.2_animate_14B_bf16.safetensors", "diffusion_models", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/vae/wan_2.1_vae.safetensors", "vae", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/clip/umt5_xxl_fp16.safetensors", "text_encoders", None),
         ("https://huggingface.co/lehychh/Wan-animate-v2v/resolve/main/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors", "loras", None),
@@ -173,7 +173,7 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/LTX2.3-Animate/resolve/main/LTX23-GalaxyAce.safetensors", "loras", None),
         ("https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-distilled-lora-384-1.1.safetensors", "loras", None),
         ("https://huggingface.co/lehychh/LTX2.3-Animate/resolve/main/bounceV2_5_LTX23_I2V.comfy.safetensors", "loras", None),
-        ("https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.1.safetensors", "upsclae_models", None),
+        ("https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.1.safetensors", "latent_upsclae_models", None),
         ("https://huggingface.co/Kijai/MelBandRoFormer_comfy/resolve/main/MelBandRoformer_fp16.safetensors", "diffusion_models", None),
     ],
 }
