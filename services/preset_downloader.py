@@ -173,7 +173,7 @@ PRESET_FILES = {
         ("https://huggingface.co/lehychh/LTX2.3-Animate/resolve/main/LTX23-GalaxyAce.safetensors", "loras", None),
         ("https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-22b-distilled-lora-384-1.1.safetensors", "loras", None),
         ("https://huggingface.co/lehychh/LTX2.3-Animate/resolve/main/bounceV2_5_LTX23_I2V.comfy.safetensors", "loras", None),
-        ("https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.1.safetensors", "latent_upsclae_models", None),
+        ("https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.1.safetensors", "latent_upscale_models", None),
         ("https://huggingface.co/Kijai/MelBandRoFormer_comfy/resolve/main/MelBandRoformer_fp16.safetensors", "diffusion_models", None),
     ],
 }
